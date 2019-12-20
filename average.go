@@ -2,7 +2,6 @@ package timeaverage
 
 import (
 	"fmt"
-	"log"
 	"sync"
 	"time"
 )
@@ -25,8 +24,8 @@ type TimeAverage struct {
 	average         float64         // calculated average value
 	SampleCount     uint            // how many measurements in .measurements
 	mu              sync.RWMutex    // mutex for locking while adding measurements and calculating averages
-	Newest          time.Time // what's the newest entry in .measurements
-	Oldest          time.Time // what's the oldest entry in .measurements (usually .measurements[0].T)
+	Newest          time.Time       // what's the newest entry in .measurements
+	Oldest          time.Time       // what's the oldest entry in .measurements (usually .measurements[0].T)
 }
 
 func New(timeWindow, rate time.Duration, initialavg float64, samplerFunc measurementFunc) *TimeAverage {
